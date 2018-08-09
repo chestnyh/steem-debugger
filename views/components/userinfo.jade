@@ -1,0 +1,31 @@
+.user-info
+  .image
+    img(src='../images/user.png', width='48', height='48', alt='User')
+  .info-container
+    .name(data-toggle='dropdown', aria-haspopup='true', aria-expanded='false') John Doe
+    .email john.doe@example.com
+    .btn-group.user-helper-dropdown
+      i.material-icons(data-toggle='dropdown', aria-haspopup='true', aria-expanded='true') keyboard_arrow_down
+      ul.dropdown-menu.pull-right
+        li
+          a(href='javascript:void(0);')
+            i.material-icons person
+            | Profile
+        li.divider(role='seperator')
+        li
+          a(href='javascript:void(0);')
+            i.material-icons group
+            | Followers
+        li
+          a(href='javascript:void(0);')
+            i.material-icons shopping_cart
+            | Sales
+        li
+          a(href='javascript:void(0);')
+            i.material-icons favorite
+            | Likes
+        li.divider(role='seperator')
+        li
+          a(href='javascript:void(0);')
+            i.material-icons input
+            | Sign Out

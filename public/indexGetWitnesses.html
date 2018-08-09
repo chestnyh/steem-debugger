@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <style>
+        #stop_button{
+            position: fixed;
+            right: 10px;
+            top: 10px;
+            background: palevioletred;
+        }
+    </style>
+</head>
+<body>
+    <input id="start_block" type="text" value="" placeholder="С какого блока начинаем поиск?">
+    <input id="finish_block" type="text" value="" placeholder="Каким блоком заканчиваем?">
+    <button onclick="getApi(parseInt(document.getElementById('start_block').value))">Start</button>
+    <table id="resultOfprodusedBlocks" border="1"></table>
+    <table id="result" border="1"></table>
+    <button id="stop_button" onclick="stop()">Stop</button>
+<script>
+
+    var minersResults = [];
+
+    function compare(value1, value2) {
+        return value2.count - value1.count;
+    }
+
+    var createTableHeader = function (tableStructure) {
+        var string = "<tr'>";
+        for(var i = 0; i < tableStructure.length; i++){
+            string += "<td>" + tableStructure[i] + "</td>";
+        }
+        string += "</tr>";
+        $("#result").append(string);
+    };
+
+    var headerCreate = false;
+
+    var stopApi = false;
+
+    var getCommentJSON = function (result, blockNum) {
+
+        if(!headerCreate) {
+            var tableStructure = [
+                "id",
+                "block_num",
+                "witness"
+            ];
+
+            createTableHeader(tableStructure);
+            headerCreate = true;
+        }
+
+        var witness = false;
+
+        for(var i in minersResults)
+            if(minersResults[i].name === result.witness)
+                witness = i;
+
+        if(witness){
+            minersResults[witness].count++
+        }
+        else{
+            minersResults.push({ name : result.witness, count : 1});
+        }
+
+        minersResults.sort(compare);
+
+        $("#resultOfprodusedBlocks").empty();
+
+        for (var i in minersResults){
+            $("#resultOfprodusedBlocks").append("<tr>\n" +
+                "        <td>"+ (parseInt(i)+1) +"</td>\n" +
+                "        <td>"+minersResults[i].name+"</td>\n" +
+                "        <td>"+minersResults[i].count+"</td>\n" +
+                "    </tr>");
+        }
+    };
+
+    var getApi = function(num){
+
+        var finishApi = parseInt(document.getElementById('finish_block').value);
+
+        $.ajax({
+            type:"POST",
+            url: "https://api.steemit.com",
+            dataType:"json",
+            data: JSON.stringify({"jsonrpc":"2.0", "method":"get_block", "params":[num.toString()], "id":1}),
+            contentType: "application/json-rpc; charset=utf-8",
+            success: function(response) {
+                if(response.result !== undefined){
+                    getCommentJSON (response.result, num);
+                }
+                else{
+                    setTimeout(getApi, "60000", num);
+                }
+                if(!stopApi && (num < finishApi || !finishApi)){
+                    getApi(num-1);
+                }
+            },
+            error: function(e){
+                setTimeout(getApi, "60000", num)
+            }
+
+        });
+    };
+
+    var stop = function(){
+        stopApi = true;
+    }
+
+</script>
+</body>
+</html>
+
+
+
+
+

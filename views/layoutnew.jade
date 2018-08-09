@@ -1,0 +1,131 @@
+doctype html
+html
+  head
+    meta(charset='UTF-8')
+    meta(content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no', name='viewport')
+    title #{title}
+    // Favicon
+    link(rel='icon', href='../favicon.ico', type='image/x-icon')
+    // Google Fonts
+    link(href='https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext', rel='stylesheet', type='text/css')
+    link(href='https://fonts.googleapis.com/icon?family=Material+Icons', rel='stylesheet', type='text/css')
+    // Bootstrap Core Css
+    link(href='../plugins/bootstrap/css/bootstrap.css', rel='stylesheet')
+    // Waves Effect Css
+    link(href='../plugins/node-waves/waves.css', rel='stylesheet')
+    // Animation Css
+    link(href='../plugins/animate-css/animate.css', rel='stylesheet')
+    // Custom Css
+    link(href='../css/style.css', rel='stylesheet')
+    // AdminBSB Themes. You can choose a theme from css/themes instead of get all themes
+    link(href='../css/themes/all-themes.css', rel='stylesheet')
+  body.theme-red
+    // Page Loader
+    .page-loader-wrapper
+      .loader
+        .preloader
+          .spinner-layer.pl-red
+            .circle-clipper.left
+              .circle
+            .circle-clipper.right
+              .circle
+        p Please wait...
+    // #END# Page Loader
+    // Overlay For Sidebars
+    .overlay
+    // #END# Overlay For Sidebars
+    // Search Bar
+    .search-bar
+      .search-icon
+        i.material-icons search
+      input(type='text', placeholder='START TYPING...')
+      .close-search
+        i.material-icons close
+    // #END# Search Bar
+    // Top Bar
+    nav.navbar
+      .container-fluid
+        .navbar-header
+          a.navbar-toggle.collapsed(href='javascript:void(0);', data-toggle='collapse', data-target='#navbar-collapse', aria-expanded='false')
+          a.bars(href='javascript:void(0);')
+          a.navbar-brand(href='widgets/../../index.html') STEEM
+        include components/commoninfo   
+        #navbar-collapse.collapse.navbar-collapse
+          ul.nav.navbar-nav.navbar-right
+            // Call Search
+            li
+              a.js-search(href='javascript:void(0);', data-close='true')
+                i.material-icons search
+            // #END# Call Search
+            // Notifications
+            li.dropdown
+              include components/notifications                    
+            // #END# Notifications
+            // Tasks
+            li.dropdown
+              include components/tasks
+            // #END# Tasks
+            li.pull-right
+              a.js-right-sidebar(href='javascript:void(0);', data-close='true')
+                i.material-icons more_vert
+    // #Top Bar
+    section
+      // Left Sidebar
+      aside#leftsidebar.sidebar
+        // User Info
+        include components/userinfo
+        // #User Info
+        // Menu
+        include components/left-menu
+        // #Menu
+        // Footer
+        .legal
+          .copyright
+            | © 2016 - 2017 
+            a(href='javascript:void(0);') AdminBSB - Material Design
+            | .
+          .version
+            b Version: 
+            |  1.0.5
+        // #Footer
+      // #END# Left Sidebar
+      // Right Sidebar
+      include components/rightsidebar
+      // #END# Right Sidebar
+    section.content
+      .container-fluid
+        // Changelogs
+        .block-header
+          h2 #{title}
+        .row.clearfix  
+          .col-lg-12.col-md-12.col-sm-12.col-xs-12
+            .card
+              .body
+                div id : #{header_info.id} 
+                div name : #{header_info.name}
+                div reward_balance : #{header_info.reward_balance}
+                div recent_claims : #{header_info.recent_claims}
+                div last_update : #{header_info.last_update}
+                div last_update : #{header_info.last_update}
+                div content_constant : #{header_info.content_constant}
+                div percent_curation_rewards : #{header_info.percent_curation_rewards}
+                div author_reward_curve : #{header_info.author_reward_curve}
+                div curation_reward_curve : #{header_info.curation_reward_curve}
+        .row.clearfix  
+          .col-lg-12.col-md-12.col-sm-12.col-xs-12
+            .card        
+              block content    
+    // Jquery Core Js
+    script(src='../plugins/jquery/jquery.min.js')
+    // Bootstrap Core Js
+    script(src='../plugins/bootstrap/js/bootstrap.js')
+    // Select Plugin Js
+    script(src='../plugins/bootstrap-select/js/bootstrap-select.js')
+    // Slimscroll Plugin Js
+    script(src='../plugins/jquery-slimscroll/jquery.slimscroll.js')
+    // Waves Effect Plugin Js
+    script(src='../plugins/node-waves/waves.js')
+    // Custom Js
+    script(src='../js/admin.js')
+    // Demo Js
+    script(src='../js/demo.js')

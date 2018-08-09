@@ -1,0 +1,343 @@
+.menu
+    ul.list
+        li.header MAIN NAVIGATION
+        li(class=category === "subscriptions" ? "active" : "")
+            a.menu-toggle(href='javascript:void(0);')
+                span Subscriptions
+            ul.ml-menu
+                li
+                    a(href='/subscriptions/setSubscribeCallback') Set Subscribe Callback
+                li
+                    a(href='/subscriptions/setBlockAppliedCallback') Set Pending Transaction Callback
+                li
+                    a(href='/subscriptions/setBlockAppliedCallback') Set Block Applied Callback
+                li
+                    a(href='/subscriptions/cancelAllSubscriptions') Cancel All Subscriptions
+        li(class=category === "tags" ? "active" : "")
+            a.menu-toggle(href='javascript:void(0);')
+                span Tags
+            ul.ml-menu
+                li
+                    a(href='/tags/getTrendingTags') Get Trending Tags
+                li
+                    a(href='/tags/getDiscussionsByTrending') Get Discussions By Trending
+                li
+                    a(href='/tags/getDiscussionsByCreated') Get Discussions By Created
+                li
+                    a(href='/tags/getDiscussionsByActive') Get Discussions By Active
+                li
+                    a(href='/tags/getDiscussionsByCashout') Get Discussions By Cashout
+                li
+                    a(href='/tags/getDiscussionsByPayout') Get Discussions By Payout
+                li
+                    a(href='/tags/getDiscussionsByVotes') Get Discussions By Votes
+                li
+                    a(href='/tags/getDiscussionsByChildren') Get Discussions By Children
+                li
+                    a(href='/tags/getDiscussionsByHot') Get Discussions By Hot
+                li
+                    a(href='/tags/getDiscussionsByFeed') Get Discussions By Feed
+                li
+                    a(href='/tags/getDiscussionsByBlog') Get Discussions By Blog
+                li
+                    a(href='/tags/getDiscussionsByComments') Get Discussions By Comments
+        li(class=category === "blocksAndTransactions" ? "active" : "")
+            a.menu-toggle(href='javascript:void(0);')
+                span Blocks and transactions
+            ul.ml-menu
+                li
+                    a(href='/blocksAndTransactions/getBlockHeader') Get Block Header
+                li
+                    a(href='/blocksAndTransactions/getBlock') Get Block
+                li
+                    a(href='/blocksAndTransactions/getState') Get State
+                li
+                    a(href='/blocksAndTransactions/getTrendingCategories') Get Trending Categories
+                li
+                    a(href='/blocksAndTransactions/getBestCategories') Get Best Categories
+                li
+                    a(href='/blocksAndTransactions/getActiveCategories') Get Active Categories
+                li
+                    a(href='/blocksAndTransactions/getRecentCategories') Get Recent Categories
+        li(class=category === "globals" ? "active" : "")
+            a.menu-toggle(href='javascript:void(0);')
+                span Globals
+            ul.ml-menu
+                li
+                    a(href='/globals/getConfig') Get Config
+                li
+                    a(href='/globals/getDynamicGlobalProperties') Get Dynamic Global Properties
+                li
+                    a(href='/globals/getChainProperties') Get Chain Properties
+                li
+                    a(href='/globals/getFeedHistory') Get Feed History
+                li
+                    a(href='/globals/getCurrentMedianHistoryPrice') Get Current Median History Price
+                li
+                    a(href='/globals/getHardforkVersion') Get Hardfork Version
+                li
+                    a(href='/globals/getNextScheduledHardfork') Get Next Scheduled Hardfork
+                li
+                    a(href='/globals/getRewardFund') Get Reward Fund
+                li
+                    a(href='/globals/getVestingDelegations') Get Vesting Delegations
+        li(class=category === "keys" ? "active" : "")
+            a.menu-toggle(href='javascript:void(0);')
+                span Keys
+            ul.ml-menu
+                li
+                    a(href='/keys/getKeyReferences') Get Key References
+        li(class=category === "accounts" ? "active" : "")
+            a.menu-toggle(href='javascript:void(0);')
+                span Accounts
+            ul.ml-menu
+                li
+                    a(href='/accounts/getAccounts') Get Accounts
+                li
+                    a(href='/accounts/getAccountReferences') Get Account References
+                li
+                    a(href='/accounts/lookupAccountNames') Lookup Account Names
+                li
+                    a(href='/accounts/lookupAccounts') Lookup Accounts
+                li
+                    a(href='/accounts/getAccountCount') Get Account Count
+                li
+                    a(href='/accounts/getConversionRequests') Get Conversion Requests
+                li
+                    a(href='/accounts/getAccountHistory') Get Account History
+                li
+                    a(href='/accounts/getOwnerHistory') Get Owner History
+                li
+                    a(href='/accounts/getRecoveryRequest') Get Recovery Request
+        li(class=category === "market" ? "active" : "")
+            a.menu-toggle(href='javascript:void(0);')
+                span Market
+            ul.ml-menu
+                li
+                    a(href='/market/getOrderBook') Get Order Book
+                li
+                    a(href='/market/getOpenOrders') Get Open Orders
+                li
+                    a(href='/market/getLiquidityQueue') Get Liquidity Queue
+        li(class=category === "authorityValidation" ? "active" : "")
+            a.menu-toggle(href='javascript:void(0);')
+                span Authority / validation
+            ul.ml-menu
+                li
+                    a(href='/authorityValidation/getTransactionHex') Get Transaction Hex
+                li
+                    a(href='/authorityValidation/getTransaction') Get Transaction
+                li
+                    a(href='/authorityValidation/getRequiredSignatures') Get Required Signatures
+                li
+                    a(href='/authorityValidation/getPotentialSignatures') Get Potential Signatures
+                li
+                    a(href='/authorityValidation/verifyAuthority') Verify Authority
+                li
+                    a(href='/authorityValidation/verifyAccountAuthority') Verify Account Authority
+        li(class=category === "votes" ? "active" : "")
+            a.menu-toggle(href='javascript:void(0);')
+                span Votes
+            ul.ml-menu
+                li
+                    a(href='/votes/getActiveVotes') Get Active Votes
+                li
+                    a(href='/votes/getAccountVotes') Get Account Votes
+        li(class=category === "content" ? "active" : "")
+            a.menu-toggle(href='javascript:void(0);')
+                span Content
+            ul.ml-menu
+                li
+                    a(href='/content/getContent') Get Content
+                li
+                    a(href='/content/getContentReplies') Get Content Replies
+                li
+                    a(href='/content/getDiscussionsByAuthorBeforeDate') Get Discussions By Author Before Date
+                li
+                    a(href='/content/getRepliesByLastUpdate') Get Replies By Last Update
+        li(class=category === "witnesses" ? "active" : "")
+            a.menu-toggle(href='javascript:void(0);')
+                span Witnesses
+            ul.ml-menu
+                li
+                    a(href='/witnesses/getWitnesses') Get Witnesses
+                li
+                    a(href='/witnesses/getWitnessByAccount') Get Witness By Account
+                li
+                    a(href='/witnesses/getWitnessesByVote') Get Witnesses By Vote
+                li
+                    a(href='/witnesses/getWitnessCount') Get Witness Count
+                li
+                    a(href='/witnesses/getActiveWitnesses') Get Active Witnesses
+                li
+                    a(href='/witnesses/getMinerQueue') Get Miner Queue
+        li(class=category === "loginApi" ? "active" : "")
+            a.menu-toggle(href='javascript:void(0);')
+                span Login API
+            ul.ml-menu
+                li
+                    a(href='/loginApi/Login') Login
+                li
+                    a(href='/loginApi/getApiByName') Get Api By Name
+        li(class=category === "followApi" ? "active" : "")
+            a.menu-toggle(href='javascript:void(0);')
+                span Follow API
+            ul.ml-menu
+                li
+                    a(href='/followApi/getFollowers') Get Followers
+                li
+                    a(href='/followApi/getFollowing') Get Following
+                li
+                    a(href='/followApi/getFollowCount') Get Follow Count
+        li(class=category === "broadcastApi" ? "active" : "")
+            a.menu-toggle(href='javascript:void(0);')
+                span Broadcast API
+            ul.ml-menu
+                li
+                    a(href='/broadcastApi/broadcastTransactionSynchronous') Broadcast Transaction Synchronous
+                li
+                    a(href='/broadcastApi/broadcastBlock') Broadcast Block
+        li(class=category === "broadcast" ? "active" : "")
+            a.menu-toggle(href='javascript:void(0);')
+                span Broadcast
+            ul.ml-menu
+                li
+                    a(href='/broadcast/accountCreate') Account Create
+                li
+                    a(href='/broadcast/accountCreateWithDelegation') Account Create With Delegation
+                li
+                    a(href='/broadcast/delegateVestingShares') Delegate Vesting Shares
+                li
+                    a(href='/broadcast/accountUpdate') Account Update
+                li
+                    a(href='/broadcast/accountWitnessProxy') Account Witness Proxy
+                li
+                    a(href='/broadcast/accountWitnessVote') Account Witness Vote
+                li
+                    a(href='/broadcast/challengeAuthority') Challenge Authority
+                li
+                    a(href='/broadcast/changeRecoveryAccount') Change Recovery Account
+                li
+                    a(href='/broadcast/comment') Comment
+                li
+                    a(href='/broadcast/commentOptions') Comment Options
+                li
+                    a(href='/broadcast/commentPayout') Comment Payout
+                li
+                    a(href='/broadcast/commentReward') Comment Reward
+                li
+                    a(href='/broadcast/convert') Convert
+                li
+                    a(href='/broadcast/curateReward') Curate Reward
+                li
+                    a(href='/broadcast/custom') Custom
+                li
+                    a(href='/broadcast/customBinary') Custom Binary
+                li
+                    a(href='/broadcast/customJson') Custom Json
+                li
+                    a(href='/broadcast/deleteComment') Delete Comment
+                li
+                    a(href='/broadcast/escrowDispute') Escrow Dispute
+                li
+                    a(href='/broadcast/escrowRelease') Escrow Release
+                li
+                    a(href='/broadcast/escrowTransfer') Escrow Transfer
+                li
+                    a(href='/broadcast/feedPublish') Feed Publish
+                li
+                    a(href='/broadcast/pow2') Pow2
+                li
+                    a(href='/broadcast/fillConvertRequest') Fill Convert Request
+                li
+                    a(href='/broadcast/fillOrder') Fill Order
+                li
+                    a(href='/broadcast/fillVestingWithdraw') Fill Vesting Withdraw
+                li
+                    a(href='/broadcast/interest') Interest
+                li
+                    a(href='/broadcast/limitOrderCancel') Limit Order Cancel
+                li
+                    a(href='/broadcast/limitOrderCreate2') Limit Order Create2
+                li
+                    a(href='/broadcast/liquidityReward') Liquidity Reward
+                li
+                    a(href='/broadcast/pow') Pow
+                li
+                    a(href='/broadcast/proveAuthority') Prove Authority
+                li
+                    a(href='/broadcast/recoverAccount') Recover Account
+                li
+                    a(href='/broadcast/reportOverProduction') Report Over Production
+                li
+                    a(href='/broadcast/requestAccountRecovery') Request Account Recovery
+                li
+                    a(href='/broadcast/escrowApprove') Escrow Approve
+                li
+                    a(href='/broadcast/setWithdrawVestingRoute') Set Withdraw Vesting Route
+                li
+                    a(href='/broadcast/transfer') Transfer
+                li
+                    a(href='/broadcast/transferToVesting') Transfer To Vesting
+                li
+                    a(href='/broadcast/vote') Vote
+                li
+                    a(href='/broadcast/withdrawVesting') Withdraw Vesting
+                li
+                    a(href='/broadcast/witnessUpdate') Witness Update
+                li
+                    a(href='/broadcast/fillVestingWithdraw') Fill Vesting Withdraw
+                li
+                    a(href='/broadcast/fillOrder') Fill Order
+                li
+                    a(href='/broadcast/fillTransferFromSavings') Fill Transfer From Savings
+                li
+                    a(href='/broadcast/commentPayout') Comment Payout
+                li
+                    a(href='/broadcast/transferToSavings') Transfer To Savings
+                li
+                    a(href='/broadcast/transferFromSavings') Transfer From Savings
+                li
+                    a(href='/broadcast/cancelTransferFromSavings') Cancel Transfer From Savings
+                li
+                    a(href='/broadcast/multisig') Multisig
+        li(class=category === "auth" ? "active" : "")
+            a.menu-toggle(href='javascript:void(0);')
+                span Auth
+            ul.ml-menu
+                li
+                    a(href='/auth/verify') Verify
+                li
+                    a(href='/auth/generateKeys') Generate Keys
+                li
+                    a(href='/auth/getPrivateKeys') Get Private Keys
+                li
+                    a(href='/auth/isWif') Is Wif
+                li
+                    a(href='/auth/toWif') To Wif
+                li
+                    a(href='/auth/wifIsValid') Wif Is Valid
+                li
+                    a(href='/auth/wifToPublic') Wif To Public
+                li
+                    a(href='/auth/signTransaction') Sign Transaction
+        li(class=category === "formatter" ? "active" : "")
+            a.menu-toggle(href='javascript:void(0);')
+                span Formatter
+            ul.ml-menu
+                li
+                    a(href='/formatter/createSuggestedPassword') Create Suggested Password
+                li
+                    a(href='/formatter/commentPermlink') Comment Permlink
+                li
+                    a(href='/formatter/estimateAccountValue') Estimate Account Value
+                li
+                    a(href='/formatter/reputation') Reputation
+                li
+                    a(href='/formatter/vestToSteem') Vest To Steem
+        li(class=category === "utils" ? "active" : "")
+            a.menu-toggle(href='javascript:void(0);')
+                span Utils
+            ul.ml-menu
+                li
+                    a(href='/utils/validateUsername') Validate Username

@@ -1,0 +1,93 @@
+doctype html
+html
+    head
+        meta(charset='UTF-8')
+        meta(http-equiv='X-UA-Compatible', content='IE=Edge')
+        meta(content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no', name='viewport')
+        title wikiinvestigation.com
+        // Favicon
+        link(rel='icon', href='favicon.ico', type='image/x-icon')
+        // Google Fonts
+        link(href='https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext', rel='stylesheet', type='text/css')
+        link(href='https://fonts.googleapis.com/icon?family=Material+Icons', rel='stylesheet', type='text/css')
+        // Bootstrap Core Css
+        link(href='/plugins/bootstrap/css/bootstrap.css', rel='stylesheet')
+        // Waves Effect Css
+        link(href='/plugins/node-waves/waves.css', rel='stylesheet')
+        // Animation Css
+        link(href='/plugins/animate-css/animate.css', rel='stylesheet')
+        // Morris Chart Css
+        link(href='/plugins/morrisjs/morris.css', rel='stylesheet')
+        // Custom Css
+        link(href='/css/style.css', rel='stylesheet')
+        // AdminBSB Themes. You can choose a theme from css/themes instead of get all themes
+        link(href='/css/themes/all-themes.css', rel='stylesheet')
+        body.theme-red
+            // Page Loader
+            //.page-loader-wrapper
+                .loader
+                    .preloader
+                        .spinner-layer.pl-red
+                            .circle-clipper.left
+                                .circle
+                            .circle-clipper.right
+                                .circle
+                    p Please wait...
+            // Overlay For Sidebars
+            .overlay
+            // #END# Overlay For Sidebars
+            // Top Bar
+            nav.navbar
+                .container-fluid
+                    .navbar-header
+                        a.navbar-toggle.collapsed(href='javascript:void(0);', data-toggle='collapse', data-target='#navbar-collapse', aria-expanded='false')
+                        a.bars(href='javascript:void(0);')
+                        a.navbar-brand(href='index.html') STEEM API TEST
+                    #navbar-collapse.collapse.navbar-collapse
+            section
+                // Left Sidebar
+                aside#leftsidebar.sidebar
+                    // User Info
+                    // #User Info
+                    // Menu
+                    //include menu/left-menu
+                    // #Menu
+                // #END# Left Sidebar        // #Top Bar
+            section.content
+                .container-fluid
+                    .block-header
+                        h2 #{title}
+                    //div.row.clearfix
+                    //    div.col-lg-12.col-md-12.col-sm-12.col-xs-12
+                    //        div.card
+                block content
+        // Jquery Core Js
+        script(src='/plugins/jquery/jquery.min.js')
+        // Bootstrap Core Js
+        script(src='/plugins/bootstrap/js/bootstrap.js')
+        // Select Plugin Js
+        script(src='/plugins/bootstrap-select/js/bootstrap-select.js')
+        // Slimscroll Plugin Js
+        script(src='/plugins/jquery-slimscroll/jquery.slimscroll.js')
+        // Waves Effect Plugin Js
+        script(src='/plugins/node-waves/waves.js')
+        // Jquery CountTo Plugin Js
+        script(src='/plugins/jquery-countto/jquery.countTo.js')
+        // Morris Plugin Js
+        script(src='/plugins/raphael/raphael.min.js')
+        script(src='/plugins/morrisjs/morris.js')
+        // ChartJs
+        script(src='/plugins/chartjs/Chart.bundle.js')
+        // Flot Charts Plugin Js
+        script(src='/plugins/flot-charts/jquery.flot.js')
+        script(src='/plugins/flot-charts/jquery.flot.resize.js')
+        script(src='/plugins/flot-charts/jquery.flot.pie.js')
+        script(src='/plugins/flot-charts/jquery.flot.categories.js')
+        script(src='/plugins/flot-charts/jquery.flot.time.js')
+        // Sparkline Chart Plugin Js
+        script(src='/plugins/jquery-sparkline/jquery.sparkline.js')
+        // Custom Js
+        script(src='/js/admin.js')
+        script(src='/js/pages/index.js')
+        // Demo Js
+        script(src='/js/demo.js')

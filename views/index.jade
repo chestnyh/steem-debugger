@@ -1,0 +1,13 @@
+extends layout
+block content
+   pre #{syntax}
+   pre #{urlSyntax}
+   if(query)
+      form
+         for i, name in query
+            div
+               | #{i.description} :
+               input(name="#{i.name}" value="#{i.value}")
+         div
+            input(type="submit" value="Get Data")
+   pre #{data}

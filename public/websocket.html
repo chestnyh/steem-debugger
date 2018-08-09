@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+  <title>Пример чата с веб-сокетом</title>
+</head>
+<body>
+  <script>
+    //let ws = new WebSocket("wss://gtg.steem.house:8090","echo-protocol");
+    let ws = new WebSocket("ws://127.0.0.1:8090","echo-protocol");
+
+    ws.onopen = function() {
+      console.log("Соединение установлено.");
+      var msg = {jsonrpc : "2.0", method : "get_dynamic_global_properties", params : [], id: "323"};
+      ws.send(JSON.stringify(msg));
+    };
+
+    ws.onclose = function(event) {
+      if (event.wasClean) {
+        console.log('Соединение закрыто чисто');
+      } else {
+        console.log('Обрыв соединения'); // например, "убит" процесс сервера
+      }
+      console.log('Код: ' + event.code + ' причина: ' + event.reason);
+    };
+    
+    ws.onmessage = function(event) {
+      console.log("Получены данные " + event.data);
+    };
+
+    ws.onerror = function(error) {
+      console.log("Ошибка " + error.message);
+    };
+
+  </script>
+</body>
+</html>

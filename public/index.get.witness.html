@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <style>
+        #stop_button{
+            position: fixed;
+            right: 10px;
+            top: 10px;
+            background: palevioletred;
+        }
+    </style>
+</head>
+<body>
+    <input id="start_block" type="text" value="" placeholder="С какого блока начинаем поиск?">
+    <input id="finish_block" type="text" value="" placeholder="Каким блоком заканчиваем?">
+    <button onclick="getApi(parseInt(document.getElementById('start_block').value))">Start</button>
+    <table id="result" border="1"></table>
+    <button id="stop_button" onclick="stop()">Stop</button>
+<script>
+
+    var createTableHeader = function (tableStructure) {
+        var string = "<tr'>";
+        for(var i = 0; i < tableStructure.length; i++){
+            string += "<td>" + tableStructure[i] + "</td>";
+        }
+        string += "</tr>";
+        $("#result").append(string);
+    };
+
+    var headerCreate = false;
+
+    var stopApi = false;
+
+    var getCommentJSON = function (result, blockNum) {
+
+
+        if(!headerCreate){
+            var tableStructure = [
+                "block_num",
+                "link",
+                "parent_author",
+                "parent_permlink",
+                "author",
+                "permlink",
+                "title",
+                "body",
+                "json_metadata"
+            ];
+
+            createTableHeader(tableStructure);
+            headerCreate = true;
+        }
+
+        for (var i = 0; i < result.transactions.length; i++) {
+            for (var j = 0; j < result.transactions[i].operations.length; j++) {
+
+                if (result.transactions[i].operations[j][0] === "comment") {
+
+                    var string = JSON.stringify(result.transactions[i].operations[j][1]);
+
+                    var steemitLink = "https://steemit.com/"+result.transactions[i].operations[j][1].parent_permlink + "/@" +
+                        result.transactions[i].operations[j][1].author + "/" + result.transactions[i].operations[j][1].permlink
+                    $("#result").append("<tr>\n" +
+                        "        <td>" + blockNum+ "</td>\n" +
+                        "        <td><a target='__blank' href='"+steemitLink+"'>Show in steemit.com</a></td>\n" +
+                        "        <td>" + result.transactions[i].operations[j][1].parent_author+ "</td>\n" +
+                        "        <td>" + result.transactions[i].operations[j][1].parent_permlink+ "</td>\n" +
+                        "        <td>" + result.transactions[i].operations[j][1].author+ "</td>\n" +
+                        "        <td>" + result.transactions[i].operations[j][1].permlink+ "</td>\n" +
+                        "        <td>" + result.transactions[i].operations[j][1].title+ "</td>\n" +
+                        "        <td>" + result.transactions[i].operations[j][1].body+ "</td>\n" +
+                        "        <td>" + result.transactions[i].operations[j][1].json_metadata+ "</td>\n" +
+                        "    </tr>");
+                }
+            }
+        }
+    };
+
+    var getApi = function(num){
+
+        var finishApi = parseInt(document.getElementById('finish_block').value);
+
+        $.ajax({
+            type:"POST",
+            url: "https://api.steemit.com",
+            dataType:"json",
+            data: JSON.stringify({"jsonrpc":"2.0", "method":"get_block", "params":[num.toString()], "id":1}),
+            contentType: "application/json-rpc; charset=utf-8",
+            success: function(response) {
+
+                console.log();
+
+                if(response.result !== undefined){
+                    console.log(response.result);
+                    getCommentJSON (response.result, num);
+                }
+                else{
+                    setTimeout(getApi, "60000", num);
+                }
+                if(!stopApi && (num < finishApi || !finishApi)){
+                    getApi(num+1);
+                }
+            },
+            error: function(e){
+                setTimeout(getApi, "60000", num)
+            }
+
+        });
+    };
+
+    var stop = function(){
+        stopApi = true;
+    }
+
+</script>
+</body>
+</html>
+
+
+
+
+
